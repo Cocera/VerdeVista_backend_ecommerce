@@ -9,6 +9,14 @@ const UserController = {
             .then(user => res.status(201).send({message:'User created', user}))
             .catch(err =>console.error(err));
     },
+    findOne(req, res) {
+        User.findOne({
+            where: {
+                id: req.params.id
+            }})
+            .then(user => res.status(200).send(user))
+            .catch(err => console.error(err));
+    },
     findAll(req, res) {
         User.findAll()
             .then(user => res.status(200).send({user}))
@@ -30,6 +38,16 @@ const UserController = {
             res.send({message:'Login done!', user})
         });
     },
+    // NO FUNCIONA
+    deleteOne(req, res) {
+        User.destroy({
+            where: {
+                id: req.params.id
+            }})
+            .then(user => res.status(200).send({message:`User with id ${req.params.id} and username ${user.username} has been deleted`}))
+            // .then(console.log(`User with id ${req.params.id} and username ${user.username} has been deleted`))
+            .catch(err => console.error(err));
+    }
 };
 
 
