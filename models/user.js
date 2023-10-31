@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.PayMethod);
       User.hasMany(models.Review);
       User.hasMany(models.Order);
+      User.hasMany(models.Token)
     }
   }
   User.init({
