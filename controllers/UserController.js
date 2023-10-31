@@ -5,9 +5,13 @@ const UserController = {
         req.body.role = "user";
         User.create(req.body)
             .then(user => res.status(201).send({message:'User created', user}))
-            .catch(err =>console.error(err))
+            .catch(err =>console.error(err));
     },
-    showAll(req, res) {}
+    findAll(req, res) {
+        User.findAll()
+            .then(user => res.status(200).send({user}))
+            .catch(err =>console.error(err));
+    }
 };
 
 
