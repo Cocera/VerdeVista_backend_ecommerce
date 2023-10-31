@@ -12,6 +12,15 @@ module.exports = {
       total_price: {
         type: Sequelize.DECIMAL
       },
+      AddressId: {
+        type: Sequelize.INTEGER
+      },
+      PayMethodId : {
+        type: Sequelize.INTEGER
+      },
+      UserId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

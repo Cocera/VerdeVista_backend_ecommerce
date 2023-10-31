@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   PayMethod.init({
+    UserId: DataTypes.INTEGER,
     payment_type: DataTypes.STRING,
     account_num: DataTypes.INTEGER,
     expiry: DataTypes.DATE

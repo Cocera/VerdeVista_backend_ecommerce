@@ -10,12 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // OrderProduct.hasMany(models.Order);
+      // OrderProduct.hasMany(models.Product);
     }
   }
   OrderProduct.init({
-    order_id: DataTypes.INTEGER,
-    product_id: DataTypes.INTEGER
+    OrderId: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'OrderProduct',

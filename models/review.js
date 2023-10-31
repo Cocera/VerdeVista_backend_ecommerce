@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Review.init({
     content: DataTypes.TEXT,
-    punctuation: DataTypes.INTEGER
+    punctuation: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER,
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Review',
