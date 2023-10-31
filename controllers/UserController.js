@@ -22,6 +22,25 @@ const UserController = {
             .then(user => res.status(200).send({user}))
             .catch(err =>console.error(err));
     },
+    update(req, res) {
+        // Faltaria hacer bien el update de la contraseña. codificarla
+        User.update(req.body, {
+          where: {
+            id: req.params.id,
+          },
+        })
+        // Este user me devuelve solo el id
+        .then(user => res.status(201).send({message:"Usuario actualizado con éxito", user}))
+        .catch(err => console.error(err));
+    },
+    delete(req, res) {
+        User.destroy({
+            where: {
+                id: req.params.id
+            }})
+            .then(res.status(200).send(`User with id ${req.params.id} has been deleted`))
+            .catch(err => console.error(err));
+    },
     login(req, res) {
         User.findOne({
             where:{
@@ -37,16 +56,6 @@ const UserController = {
             }
             res.send({message:'Login done!', user})
         });
-    },
-    // NO FUNCIONA
-    deleteOne(req, res) {
-        User.destroy({
-            where: {
-                id: req.params.id
-            }})
-            .then(user => res.status(200).send({message:`User with id ${req.params.id} and username ${user.username} has been deleted`}))
-            // .then(console.log(`User with id ${req.params.id} and username ${user.username} has been deleted`))
-            .catch(err => console.error(err));
     }
 };
 
