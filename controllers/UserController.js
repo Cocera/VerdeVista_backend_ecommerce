@@ -7,7 +7,10 @@ const UserController = {
         const password = bcrypt.hashSync(req.body.password,10);
         User.create({...req.body, password:password})
             .then(user => res.status(201).send({message:'User created', user}))
-            .catch(err =>console.error(err));
+            .catch(err => {
+                console.error(err);
+                res.status(500).send(err);
+            });
     },
     findOne(req, res) {
         User.findOne({
@@ -48,11 +51,11 @@ const UserController = {
             }
         }).then(user=>{
             if(!user){
-                return res.status(400).send({message:"Incorrect username"})
+                return res.status(400).send({message:"Incorrect username or password"})
             }
             const isMatch = bcrypt.compareSync(req.body.password, user.password);
             if(!isMatch){   
-                return res.status(400).send({message:"Incorrect password"})
+                return res.status(400).send({message:"Incorrect username or password"})
             }
             res.send({message:'Login done!', user})
         });
