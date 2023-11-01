@@ -1,4 +1,4 @@
-const { User } = require('../models/index.js');
+const { User, Token } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');  // importamos la dependencia
 const { jwt_secret } = require('../config/config.json')['development'];  // importamos el secreto, ruta mas dentro de development
@@ -60,6 +60,7 @@ const UserController = {
                 return res.status(400).send({message:"Incorrect username or password"})
             };
             const token = jwt.sign({id: user.id}, jwt_secret);
+            Token.create({token, UserId: user.id, permission:true});
             res.send({message:'Welcome '+ user.username, user, token})
         });
     }
