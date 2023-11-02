@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       total_price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DECIMAL
       },
       AddressId: {
         type: Sequelize.INTEGER
