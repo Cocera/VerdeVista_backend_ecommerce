@@ -7,7 +7,7 @@ const TokenController = {
             .catch(err => console.error(err));
     },
     findUser(req, res) {
-        Token.findOne({
+        Token.findAll({
             where: {
                 UserId: req.params.id
             }})

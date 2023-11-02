@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       price: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.FLOAT
       },
       CategoryId : {
         type: Sequelize.INTEGER
