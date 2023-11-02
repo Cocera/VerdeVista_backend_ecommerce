@@ -14,7 +14,7 @@ const OrderController = {
     },
     findAll(req, res) {
         Order.findAll({
-            include: [{model:Product, through: { attributes: []}}],
+            include: [{model:Product, attributes: ['name','price'], through: { attributes:[]}}],
         })
         .then(order => res.status(200).send(order))
         .catch(err => {
