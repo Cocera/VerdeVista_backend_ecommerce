@@ -43,7 +43,14 @@ const UserController = {
             where: {
                 id: req.params.id
             }})
-            .then(res.status(200).send(`User with id ${req.params.id} has been deleted`))
+            .then(()=>{
+                res.status(200).send(`User with id ${req.params.id} has been deleted`)
+                Token.update({permission: false}, {
+                    where: {
+                      UserId: req.params.id
+                    },
+                })
+            })
             .catch(err => console.error(err));
     },
     login(req, res) {
