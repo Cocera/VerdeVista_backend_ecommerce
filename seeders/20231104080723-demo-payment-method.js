@@ -7,7 +7,7 @@ module.exports = {
         UserId: 1,
         payment_type: 'VISA',
         account_num:'123456789',
-        expiry:'2024-04-00',
+        expiry:'2024-04-01',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -15,7 +15,7 @@ module.exports = {
         UserId: 2,
         payment_type: 'MASTERCARD',
         account_num:'123456789',
-        expiry:'2026-05-00',
+        expiry:'2026-05-01',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -23,7 +23,7 @@ module.exports = {
         UserId: 3,
         payment_type: 'MASTERCARD',
         account_num:'123456789',
-        expiry:'2030-10-00',
+        expiry:'2030-10-01',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -31,7 +31,7 @@ module.exports = {
         UserId: 4,
         payment_type: 'VISA',
         account_num:'123456789',
-        expiry:'2033-12-00',
+        expiry:'2033-12-01',
         createdAt: new Date(),
         updatedAt: new Date()
       },
