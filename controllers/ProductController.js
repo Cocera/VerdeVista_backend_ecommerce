@@ -41,6 +41,19 @@ const ProductController = {
             res.status(500).send(err);
         });
     },
+    // ---------------- NO ENCUENTRA PRECIO CON DECIMAL; SOLO ENTERO
+    findOneByPrice(req, res) {
+        Product.findOne({
+            where: {
+                price: req.params.price
+            }
+        })
+        .then(product => res.status(200).send({message: `Found product with price ${req.params.price}` ,product}))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
     // añadir comprobar si id es existente
     delete(req, res) {
         Product.destroy({
