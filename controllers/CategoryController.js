@@ -16,6 +16,19 @@ const CategoryController = {
                 console.error(err);
                 res.status(500).send(err);
             });
+    },
+    update(req, res) {
+        Category.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        // "category" me devuelve solo el id, no el objeto entero
+        .then(category => res.status(200).send({message: `Category with id ${req.params.id} updated`, category}))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
     }
 };
 
