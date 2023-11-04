@@ -17,10 +17,22 @@ const ProductController = {
             res.status(500).send(err);
         });
     },
-    findOne(req, res) {
+    findOneById(req, res) {
         Product.findOne({
             where: {
                 id: req.params.id
+            }
+        })
+        .then(product => res.status(200).send(product))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
+    findOneByName(req, res) {
+        Product.findOne({
+            where: {
+                name: req.params.name
             }
         })
         .then(product => res.status(200).send(product))
