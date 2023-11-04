@@ -11,7 +11,44 @@ const ProductController = {
     },
     findAll(req, res) {
         Product.findAll()
-        .then(product => res.status(201).send(product))
+        .then(product => res.status(200).send(product))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
+    findOne(req, res) {
+        Product.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(product => res.status(200).send(product))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
+    // añadir comprobar si id es existente
+    delete(req, res) {
+        Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(res.status(200).send({message: `Product with id ${req.params.id} deleted`}))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
+    update(req, res) {
+        Product.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(res.status(200).send({message: `Product with id ${req.params.id} updated`}))
         .catch(err => {
             console.error(err);
             res.status(500).send(err);
