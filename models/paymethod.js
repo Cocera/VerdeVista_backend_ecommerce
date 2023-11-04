@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     payment_type: DataTypes.STRING,
     account_num: DataTypes.INTEGER,
-    expiry: DataTypes.DATE
+    expiry: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'PayMethod',

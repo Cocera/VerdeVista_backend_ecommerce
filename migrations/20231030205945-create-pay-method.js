@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       expiry: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
