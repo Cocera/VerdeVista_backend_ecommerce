@@ -21,9 +21,8 @@ const CategoryController = {
     },
     findOneById(req, res) {
         Category.findOne({
-            where: {
-                id: req.params.id
-            }
+            where: {id: req.params.id},
+            include: [{model:Product, attributes: ['id', 'name', 'description']}]
         })
         .then(category => res.status(200).send(category))
         .catch(err => {
@@ -33,9 +32,8 @@ const CategoryController = {
     },
     findOneByName(req, res) {
         Category.findOne({
-            where: {
-                name: req.params.name
-            }
+            where: {name: req.params.name},
+            include: [{model:Product, attributes: ['id', 'name', 'description']}]
         })
         .then(category => res.status(200).send(category))
         .catch(err => {
