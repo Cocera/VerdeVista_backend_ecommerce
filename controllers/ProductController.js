@@ -1,4 +1,4 @@
-const { Product } = require('../models/index.js');
+const { Product, Category } = require('../models/index.js');
 
 const ProductController = {
     create(req, res) {
@@ -10,7 +10,9 @@ const ProductController = {
         });  
     },
     findAll(req, res) {
-        Product.findAll()
+        Product.findAll({
+            include:  [{model:Category, attributes:['id', 'name', 'description']}]
+        })
         .then(product => res.status(200).send(product))
         .catch(err => {
             console.error(err);
@@ -19,9 +21,8 @@ const ProductController = {
     },
     findOneById(req, res) {
         Product.findOne({
-            where: {
-                id: req.params.id
-            }
+            where: {id: req.params.id},
+            include: [{model:Category, attributes:['id', 'name', 'description']}]
         })
         .then(product => res.status(200).send(product))
         .catch(err => {
@@ -31,9 +32,8 @@ const ProductController = {
     },
     findOneByName(req, res) {
         Product.findOne({
-            where: {
-                name: req.params.name
-            }
+            where: {name: req.params.name},
+            include: [{model:Category, attributes:['id', 'name', 'description']}]
         })
         .then(product => res.status(200).send(product))
         .catch(err => {
@@ -44,9 +44,8 @@ const ProductController = {
     // ---------------- NO ENCUENTRA PRECIO CON DECIMAL; SOLO ENTERO
     findOneByPrice(req, res) {
         Product.findOne({
-            where: {
-                price: req.params.price
-            }
+            where: {price: req.params.price},
+            include: [{model:Category, attributes:['id', 'name', 'description']}]
         })
         .then(product => res.status(200).send({message: `Found product with price ${req.params.price}` ,product}))
         .catch(err => {
