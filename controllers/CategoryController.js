@@ -17,6 +17,18 @@ const CategoryController = {
                 res.status(500).send(err);
             });
     },
+    findOneById(req, res) {
+        Category.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(category => res.status(200).send(category))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
     update(req, res) {
         Category.update(req.body, {
             where: {
