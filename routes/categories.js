@@ -4,6 +4,7 @@ const CategoryController = require('../controllers/CategoryController.js');
 
 router.get('/', CategoryController.findAll);
 router.get('/id/:id', CategoryController.findOneById);
+router.get('/name/:name', CategoryController.findOneByName);
 router.put('/id/:id', CategoryController.update);
 router.post('/', CategoryController.create);
 router.delete('/id/:id', CategoryController.delete);

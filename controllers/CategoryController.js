@@ -1,4 +1,4 @@
-const { Category } = require('../models/index.js');
+const { Category, Product } = require('../models/index.js');
 
 const CategoryController = {
     create(req, res) {
@@ -10,7 +10,9 @@ const CategoryController = {
             });
     },
     findAll(req, res) {
-        Category.findAll()
+        Category.findAll({
+            include: [{model:Product, attributes: ['id', 'name', 'description']}]
+        })
             .then(category => res.status(200).send(category))
             .catch(err => {
                 console.error(err);
@@ -21,6 +23,18 @@ const CategoryController = {
         Category.findOne({
             where: {
                 id: req.params.id
+            }
+        })
+        .then(category => res.status(200).send(category))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
+    findOneByName(req, res) {
+        Category.findOne({
+            where: {
+                name: req.params.name
             }
         })
         .then(category => res.status(200).send(category))
