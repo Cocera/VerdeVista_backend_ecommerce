@@ -1,4 +1,4 @@
-const { User, Token, Order, Address, PayMethod } = require('../models/index.js');
+const { User, Token, Order, Address, PayMethod, Product } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');  // importamos la dependencia
 const { jwt_secret } = require('../config/config.json')['development'];  // importamos el secreto, ruta mas dentro de development
@@ -19,6 +19,7 @@ const UserController = {
             where: {id: req.params.id},
             include: [{model: Order, attributes: ['id', 'total_price'],
                 include: [
+                    {model: Product, attributes: ['name', 'price'], through: { attributes:[]}},
                     {model: Address, attributes: ['address_line1', 'city', 'postal_code', 'country']},
                     {model: PayMethod, attributes: ['payment_type', 'account_num', 'expiry']}
             ]}]
