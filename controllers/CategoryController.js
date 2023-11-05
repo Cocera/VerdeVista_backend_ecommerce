@@ -41,6 +41,18 @@ const CategoryController = {
             console.error(err);
             res.status(500).send(err);
         });
+    },
+    delete(req, res) {
+        Category.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(category => res.status(200).send({message: `Category with id ${req.params.id} deleted`}))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
     }
 };
 
