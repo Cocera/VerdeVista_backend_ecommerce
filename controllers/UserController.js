@@ -1,4 +1,4 @@
-const { User, Token } = require('../models/index.js');
+const { User, Token, Order, Address, PayMethod } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');  // importamos la dependencia
 const { jwt_secret } = require('../config/config.json')['development'];  // importamos el secreto, ruta mas dentro de development
@@ -16,9 +16,13 @@ const UserController = {
     },
     findOne(req, res) {
         User.findOne({
-            where: {
-                id: req.params.id
-            }})
+            where: {id: req.params.id},
+            include: [{model: Order, attributes: ['id', 'total_price'],
+                include: [
+                    {model: Address, attributes: ['address_line1', 'city', 'postal_code', 'country']},
+                    {model: PayMethod, attributes: ['payment_type', 'account_num', 'expiry']}
+            ]}]
+        })
             .then(user => res.status(200).send(user))
             .catch(err => console.error(err));
     },
