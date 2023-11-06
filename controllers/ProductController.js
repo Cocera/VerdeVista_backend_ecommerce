@@ -53,6 +53,18 @@ const ProductController = {
             res.status(500).send(err);
         });
     },
+    sortByPrice(req, res) {
+        Product.findAll({
+            order: [
+                ['price', 'ASC']
+            ]
+        })
+        .then(product => res.status(200).send(product))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+    },
     // añadir comprobar si id es existente
     delete(req, res) {
         Product.destroy({
