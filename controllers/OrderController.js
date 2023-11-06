@@ -2,7 +2,7 @@ const { Order, Product, OrderProduct } = require('../models/index.js');
 
 const OrderController = {
     create(req, res) {
-        Order.create(req.body)
+        Order.create({...req.body, UserId: req.user.id})
         .then(order => {
             order.addProduct(req.body.ProductId);
             res.status(201).send({message:'Order created', order});

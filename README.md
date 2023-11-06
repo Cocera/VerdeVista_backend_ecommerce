@@ -1,4 +1,4 @@
-# VerdeVista - E-Commerce API Project
+# VerdeVista / E-Commerce API Project
 
 Welcome to the E-Commerce API project! 
 The main objective is to build the backend of an ecommerce dedicated to the sale of plants online.

@@ -65,11 +65,11 @@ const UserController = {
             }
         }).then(user=>{
             if(!user){
-                return res.status(400).send({message:"Incorrect username or password"})
+                return res.status(400).send({message:"Incorrect username"})
             };
             const isMatch = bcrypt.compareSync(req.body.password, user.password);
             if(!isMatch){   
-                return res.status(400).send({message:"Incorrect username or password"})
+                return res.status(400).send({message:"Incorrect password"})
             };
             const token = jwt.sign({id: user.id}, jwt_secret);
             Token.create({token, UserId: user.id, permission:true});
