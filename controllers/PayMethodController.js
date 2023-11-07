@@ -1,21 +1,23 @@
 const {PayMethod} = require('../models/index');
 
 const PayMethodController = {
-    create(req, res) {
-        PayMethod.create({...req.body, UserId: req.user.id})
-        .then(payMethod => res.status(201).send({message:'Pay method created', payMethod}))
-        .catch(err => {
-            console.error(err);
-            res.status(500).send(err);
-        });
+    async create(req, res) {
+        try {
+            const newPayMethod = await PayMethod.create({...req.body, UserId: req.user.id});
+            res.status(201).send({message: 'New pay method created', newPayMethod});
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+        };
     },
-    findAll(req, res) {
-        PayMethod.findAll()
-        .then(payMethod => res.status(200).send(payMethod))
-        .catch(err => {
-            console.error(err);
-            res.status(500).send(err);
-        });
+    async findAll(req, res) {
+        try {
+            const payMethods = await PayMethod.findAll();
+            res.status(200).send(payMethods);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error); 
+        };
     }
 };
 

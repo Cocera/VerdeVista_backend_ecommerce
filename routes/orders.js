@@ -5,8 +5,8 @@ const router =  express.Router();
 
 
 router.post('/', authentication, OrderController.create);
-router.get('/', OrderController.findAll);
-router.put('/id/:id', OrderController.update);
-router.delete('/id/:id', OrderController.delete);
+router.get('/', authentication, OrderController.findAll);
+router.put('/id/:id', authentication, OrderController.update); // ADMIN
+router.delete('/id/:id', authentication, OrderController.delete); // ADMIN
 
 module.exports = router;

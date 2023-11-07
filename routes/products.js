@@ -6,6 +6,7 @@ router.get('/', ProductController.findAll);
 router.get('/id/:id', ProductController.findOneById);
 router.get('/name/:name', ProductController.findOneByName);
 router.get('/price/:price', ProductController.findOneByPrice);
+router.get('/price/asc', ProductController.sortByPrice);
 router.post('/', ProductController.create);
 router.put('/id/:id', ProductController.update);
 router.delete('/id/:id', ProductController.delete);

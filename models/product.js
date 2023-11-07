@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     stock: DataTypes.INTEGER,
-    price: DataTypes.DECIMAL,
+    price: DataTypes.FLOAT(11, 10),
     CategoryId: DataTypes.INTEGER
   }, {
     sequelize,
