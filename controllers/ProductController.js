@@ -5,9 +5,9 @@ const ProductController = {
         try {
             const product = await Product.create(req.body);
             res.status(201).send({ message: 'Product created', product });
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -17,9 +17,9 @@ const ProductController = {
                 include: [{ model: Category, attributes: ['id', 'name', 'description'] }]
             });
             res.status(200).send(product);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -34,9 +34,9 @@ const ProductController = {
                 include: [{ model: Category, attributes: ['id', 'name', 'description'] }]
             });
             res.status(200).send(product);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -51,9 +51,9 @@ const ProductController = {
                 include: [{ model: Category, attributes: ['id', 'name', 'description'] }]
             });
             res.status(200).send(product);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -71,9 +71,9 @@ const ProductController = {
                 include: [{ model: Category, attributes: ['id', 'name', 'description'] }]
             });
             res.status(200).send({ message: `Found product with price ${req.params.price}`, products });
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
     // ---------------------------------------------- NO VA
@@ -83,9 +83,9 @@ const ProductController = {
                 order: [['price', 'ASC']]
             });
             res.status(200).send(productsAsc);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -101,9 +101,9 @@ const ProductController = {
                 }
             });
             res.status(200).send({ message: `Product with id ${req.params.id} deleted` });
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     },
 
@@ -119,9 +119,9 @@ const ProductController = {
                 }
             });
             res.status(200).send({ message: `Product with id ${req.params.id} updated` });
-        } catch (err) {
-            console.error(err);
-            res.status(500).send(err);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     }
 };
