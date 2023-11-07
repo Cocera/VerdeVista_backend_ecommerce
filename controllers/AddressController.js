@@ -35,9 +35,13 @@ const AddressController = {
         };
     },
     // Solo el usuario puede borrar sus direcciones registradas
-    async delete() {
+    async delete(req, res) {
         try {
-            const deleteAddress = await Address.destroy();
+            const deleteAddress = await Address.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
             res.status().send({message: `Address deleted`, deleteAddress});
         } catch (error) {
             console.error(error);

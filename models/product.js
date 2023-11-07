@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    stock: DataTypes.INTEGER,
-    price: DataTypes.FLOAT(11, 10),
+    stock: DataTypes.FLOAT,
+    price: DataTypes.FLOAT,
     CategoryId: DataTypes.INTEGER
   }, {
     sequelize,

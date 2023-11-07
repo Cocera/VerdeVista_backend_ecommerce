@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       total_price: {
-        type: Sequelize.FLOAT(11, 10)
+        type: Sequelize.FLOAT
       },
       AddressId: {
         type: Sequelize.INTEGER

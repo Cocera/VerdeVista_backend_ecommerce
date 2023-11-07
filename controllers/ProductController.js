@@ -67,10 +67,10 @@ const ProductController = {
     // ---------------------------------------------- NO VA
     async sortByPrice(req, res) {
         try {
-            const products = await Product.findAll({
+            const productsAsc = await Product.findAll({
                 order: [['price', 'ASC']]
             });
-            res.status(200).send(products);
+            res.status(200).send(productsAsc);
         } catch (err) {
             console.error(err);
             res.status(500).send(err);

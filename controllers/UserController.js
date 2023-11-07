@@ -1,7 +1,8 @@
-const { User, Token, Order, Address, PayMethod, Product } = require('../models/index.js');
+const { User, Token, Order, Address, PayMethod, Product, Sequelize } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');  // importamos la dependencia
 const { jwt_secret } = require('../config/config.json')['development'];  // importamos el secreto, ruta mas dentro de development
+const { Op } = Sequelize;
 
 const UserController = {
     async create(req, res) {
@@ -13,7 +14,7 @@ const UserController = {
       } catch (err) {
         console.error(err);
         res.status(500).send(err);
-      }
+      };
     },
   
     async findOne(req, res) {
@@ -59,13 +60,28 @@ const UserController = {
   
     async update(req, res) {
       try {
-        await User.update(req.body, {
+        const userUpdated = await User.update(req.body, {
+          where: {
+            id: req.user.id,
+          },
+        });
+        // Este user me devuelve solo el id
+        res.status(201).send({ message: "Usuario actualizado con éxito", userUpdated });
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
+    async updateAdmin(req, res) {
+      try {
+        const userUpdated = await User.update(req.body, {
           where: {
             id: req.params.id,
           },
         });
+        console.log(userUpdated);
         // Este user me devuelve solo el id
-        res.status(201).send({ message: "Usuario actualizado con éxito", user });
+        res.status(201).json({ message: "Usuario actualizado con éxito", userUpdated });
       } catch (err) {
         console.error(err);
       }
@@ -113,6 +129,26 @@ const UserController = {
         console.error(err);
       }
     },
+
+    async logout(req, res) {
+      try {
+        await Token.destroy({
+          where: {
+            [Op.and]: [
+              { UserId: req.user.id },
+              { token: req.headers.authorization },
+            ],
+          },
+        });
+        res.send({ message:"Successfully logged out"});
+      } catch (error) {
+        console.log(error);
+        res
+          .status(500)
+          .send({ message:"Ups! There was a problem trying to disconnect you"});
+      }
+    },
+
   };
   
 
