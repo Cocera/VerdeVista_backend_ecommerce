@@ -17,11 +17,30 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Token)
     }
   }
+
   User.init({
-    username: DataTypes.STRING,
-    mail: DataTypes.STRING,
-    password: DataTypes.STRING,
-    mobile: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Username required' }
+      }
+    },
+    mail: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { message: 'Mail required' },
+        isMail: { message: 'Invalid mail format' }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { message: 'Password required' },
+      }
+    },
     role: DataTypes.STRING
   }, {
     sequelize,

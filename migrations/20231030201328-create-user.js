@@ -18,9 +18,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      mobile: {
-        type: Sequelize.STRING
-      },
       role: {
         type: Sequelize.STRING
       },
