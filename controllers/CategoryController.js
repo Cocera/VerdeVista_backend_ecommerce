@@ -10,6 +10,7 @@ const CategoryController = {
             res.status(500).send(error);
         };
     },
+
     async findAll(req, res) {
         try {
             const categoriesAndProducts = await Category.findAll({
@@ -21,8 +22,13 @@ const CategoryController = {
             res.status(500).send(error);
         }
     },
+
     async findOneById(req, res) {
         try {
+            const categoryFind = await User.findOne({where:{id:req.params.id}});
+            if (!categoryFind) {
+                res.status(400).send({message: `Category with id ${req.params.id} does not exist in the DB`});
+            };
             const categoryById = await Category.findOne({
                 where: {id: req.params.id},
                 include: [{model:Product, attributes: ['id', 'name', 'description']}]
@@ -33,8 +39,13 @@ const CategoryController = {
             res.status(500).send(error);
         };
     },
+
     async findOneByName(req, res) {
         try {
+            const categoryFind = await User.findOne({where:{name:req.params.name}});
+            if (!categoryFind) {
+                res.status(400).send({message: `Category with name ${req.params.name} does not exist in the DB`});
+            };
             const categoryByName = await Category.findOne({
                 where: {name: req.params.name},
                 include: [{model:Product, attributes: ['id', 'name', 'description']}]
@@ -45,8 +56,13 @@ const CategoryController = {
             res.status(500).send(error);
         };
     },
+
     async update(req, res) {
         try {
+            const categoryFind = await User.findOne({where:{id:req.params.id}});
+            if (!categoryFind) {
+                res.status(400).send({message: `Category with id ${req.params.id} does not exist in the DB`});
+            };
             const categoryUpdated = await Category.update(req.body, {
                 where: {
                     id: req.params.id
@@ -58,9 +74,14 @@ const CategoryController = {
             res.status(500).send(error);
         }
     },
+
     async delete(req, res) {
         try {
-            const deleteCategory = await Category.destroy({
+            const categoryFind = await User.findOne({where:{id:req.params.id}});
+            if (!categoryFind) {
+                res.status(400).send({message: `Category with id ${req.params.id} does not exist in the DB`});
+            };
+            await Category.destroy({
                 where: {
                     id: req.params.id
                 }

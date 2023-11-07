@@ -19,6 +19,10 @@ const UserController = {
   
     async findOne(req, res) {
       try {
+        const userFind = await User.findOne({where:{id:req.params.id}});
+        if (!userFind) {
+          res.status(400).send({message: `User with id ${req.params.id} does not exist in the DB`});
+        };
         const user = await User.findOne({
           where: { id: req.params.id },
           include: [
@@ -65,8 +69,7 @@ const UserController = {
             id: req.user.id,
           },
         });
-        // Este user me devuelve solo el id
-        res.status(201).send({ message: "Usuario actualizado con éxito", userUpdated });
+        res.status(200).send({ message: `User ${req.body.name} updated successfully.`});
       } catch (err) {
         console.error(err);
       }
@@ -74,6 +77,10 @@ const UserController = {
 
     async updateAdmin(req, res) {
       try {
+        const userFind = await User.findOne({where:{id:req.params.id}});
+        if (!userFind) {
+          res.status(400).send({message: `User with id ${req.params.id} does not exist in the DB`});
+        };
         const userUpdated = await User.update(req.body, {
           where: {
             id: req.params.id,
@@ -89,13 +96,17 @@ const UserController = {
   
     async delete(req, res) {
       try {
-        await User.destroy({
+        const userFind = await User.findOne({where:{id:req.params.id}});
+        if (!userFind) {
+          res.status(400).send({message: `User with id ${req.params.id} does not exist in the DB`});
+        };
+        const userDestroy = await User.destroy({
           where: {
             id: req.params.id,
           },
         });
         res.status(200).send(`User with id ${req.params.id} has been deleted`);
-        await Token.update({ permission: false }, {
+        const breakPermissionToken = await Token.update({ permission: false }, {
           where: {
             UserId: req.params.id,
           },
