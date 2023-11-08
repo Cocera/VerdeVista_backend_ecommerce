@@ -79,4 +79,4 @@ The following are the different endpoints implemented in the API:
 
 
 ## 🚀 Connect with me!
-<a href="https://www.linkedin.com/in/veronica-polegre-304a3b297/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/alvaro-cocera-adail/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
