@@ -4,10 +4,44 @@ Welcome to the E-Commerce API project!
 The main objective is to build the backend of an ecommerce dedicated to the sale of plants online.
 This project combines the power of Node.js, Express, MySQL/Sequelize, and various web development technologies to create a robust backend for an online store. As a developer, you will have the opportunity to showcase your skills in building a fully functional RESTful API for an e-commerce platform.
 
-## MySQL Diagram
-
 ![](https://github.com/Cocera/VerdeVista_backend_ecommerce/blob/main/assets/diagramDB.gif)
 <a href="https://dbdiagram.io/d/VerdeVistaDB-653fe02cffbf5169f0bfeff4">Link to the project diagram</a>
+
+## 🌐 Endpoints
+
+The following are the different endpoints implemented in the API:
+
+- <strong>Products</strong> main endpoints
+  - CRUD operations for products
+  - Endpoint to create a product
+  - Endpoint to update a product
+  - Endpoint to delete a product
+  - Endpoint to retrieve products with their categories
+  - Endpoint to retrieve a product by its ID
+  - Filters to search for a product by name and price
+  - Filter to sort products by price from highest to lowest
+
+- <strong>Categories</strong> main endpoints
+  - CRUD operations for categories
+  - Endpoint to create a category
+  - Endpoint to update a category
+  - Endpoint to delete a category
+  - Endpoint to view all categories with their products
+  - Endpoint to retrieve a category by its ID
+  - Filter to search for a category by name
+
+- <strong>Orders</strong> main endpoints
+  - Endpoint to view orders with the products they contain
+  - Endpoint to create orders
+
+- <strong>Users</strong> main endpoints
+  - Endpoint to register a user using bcrypt
+  - Endpoint to log in using bcrypt + JWT
+  - Endpoint to retrieve information of the logged-in user with their orders and products
+  - Endpoint to log out
+
+- Seeders
+  - Creation of seeders for Products, Users, Categories, Addresses and Payment Methods in order to facilitate the verification of endpoints in the API.
 
 ## Technologies used
 <ul>
