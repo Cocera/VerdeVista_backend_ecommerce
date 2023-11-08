@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(models.Address);
       User.hasMany(models.PayMethod);
-      User.hasMany(models.Review);
       User.hasMany(models.Order);
       User.hasMany(models.Token)
     }
