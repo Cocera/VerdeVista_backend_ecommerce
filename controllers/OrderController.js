@@ -4,7 +4,7 @@ const OrderController = {
     async create(req, res) {
         try {
             const newOrder = await Order.create({ ...req.body, UserId: req.user.id });
-            await order.addProduct(req.body.ProductId);
+            await Order.addProduct(req.body.ProductId);
             res.status(201).send({ message: 'Order created'});
         } catch (error) {
             console.error(error);
