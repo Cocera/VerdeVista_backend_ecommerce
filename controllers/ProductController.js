@@ -25,7 +25,7 @@ const ProductController = {
 
     async findOneById(req, res) {
         try {
-            const productFind = await User.findOne({where:{id:req.params.id}});
+            const productFind = await Product.findOne({where:{id:req.params.id}});
             if (!productFind) {
                 res.status(400).send({message: `Product with id ${req.params.id} does not exist in the DB`});
             };
@@ -42,7 +42,7 @@ const ProductController = {
 
     async findOneByName(req, res) {
         try {
-            const productFind = await User.findOne({where:{name:req.params.name}});
+            const productFind = await Product.findOne({where:{name:req.params.name}});
             if (!productFind) {
                 res.status(400).send({message: `Product with name ${req.params.name} does not exist in the DB`});
             };
@@ -57,12 +57,9 @@ const ProductController = {
         }
     },
 
-    // ---------------------------------------------- NO ENCUENTRA PRECIO CON DECIMAL; SOLO ENTERO
-    // ---------------------------------------------- OPCION A SABER CUANTOS PRODUCTOS HAY CON ESE PRECIO
-
     async findOneByPrice(req, res) {
         try {
-            const productFind = await User.findOne({where:{price:req.params.price}});
+            const productFind = await Product.findOne({where:{price:req.params.price}});
             if (!productFind) {
                 res.status(400).send({message: `Product with price ${req.params.price} does not exist in the DB`});
             };
@@ -76,7 +73,7 @@ const ProductController = {
             res.status(500).send(error);
         }
     },
-    // ---------------------------------------------- NO VA
+
     async sortByPrice(req, res) {
         try {
             const productsAsc = await Product.findAll({
@@ -91,7 +88,7 @@ const ProductController = {
 
     async delete(req, res) {
         try {
-            const productFind = await User.findOne({where:{id:req.params.id}});
+            const productFind = await Product.findOne({where:{id:req.params.id}});
             if (!productFind) {
                 res.status(400).send({message: `Product with id ${req.params.id} does not exist in the DB`});
             };
@@ -109,7 +106,7 @@ const ProductController = {
 
     async update(req, res) {
         try {
-            const productFind = await User.findOne({where:{id:req.params.id}});
+            const productFind = await Product.findOne({where:{id:req.params.id}});
             if (!productFind) {
                 res.status(400).send({message: `Product with id ${req.params.id} does not exist in the DB`});
             };
