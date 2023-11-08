@@ -5,7 +5,8 @@ The main objective is to build the backend of an ecommerce dedicated to the sale
 This project combines the power of Node.js, Express, MySQL/Sequelize, and various web development technologies to create a robust backend for an online store. As a developer, you will have the opportunity to showcase your skills in building a fully functional RESTful API for an e-commerce platform.
 
 ## MySQL Diagram
-![](https://github.com/Cocera/The_Quiz/blob/main/assets/mockupQuiz.gif)
+![](https://github.com/Cocera/VerdeVista_backend_ecommerce/blob/main/assets/diagramDB.gif)
+<a href="https://dbdiagram.io/d/VerdeVistaDB-653fe02cffbf5169f0bfeff4">Link to the project diagram</a>
 
 ## Technologies used
 <ul>
