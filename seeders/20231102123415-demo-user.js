@@ -9,7 +9,6 @@ module.exports = {
         username: 'Paco',
         mail: 'paco@example.com',
         password: bcrypt.hashSync('123456', 10),
-        mobile:'123456',
         role:'superadmin',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -18,7 +17,6 @@ module.exports = {
         username: 'Marta',
         mail: 'marta@example.com',
         password: bcrypt.hashSync('123456', 10),
-        mobile:'123456',
         role:'admin',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -27,7 +25,6 @@ module.exports = {
         username: 'Sara',
         mail: 'sara@example.com',
         password: bcrypt.hashSync('123456', 10),
-        mobile:'123456',
         role:'user',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -36,7 +33,6 @@ module.exports = {
         username: 'Demis',
         mail: 'demis@example.com',
         password: bcrypt.hashSync('123456', 10),
-        mobile:'123456',
         role:'user',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -45,7 +41,6 @@ module.exports = {
         username: 'Vero',
         mail: 'vero@example.com',
         password: bcrypt.hashSync('123456', 10),
-        mobile:'123456',
         role:'user',
         createdAt: new Date(),
         updatedAt: new Date()

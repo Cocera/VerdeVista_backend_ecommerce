@@ -1,13 +1,13 @@
 const { Product, Category } = require('../models/index.js');
 
 const ProductController = {
-    async create(req, res) {
+    async create(req, res, next) {
         try {
             const product = await Product.create(req.body);
             res.status(201).send({ message: 'Product created', product });
         } catch (error) {
             console.error(error);
-            res.status(500).send(error);
+            next(error);
         }
     },
 

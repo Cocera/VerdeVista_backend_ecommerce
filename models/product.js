@@ -16,11 +16,41 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    name: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    stock: DataTypes.FLOAT,
-    price: DataTypes.FLOAT,
-    CategoryId: DataTypes.INTEGER
+    name:  {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Name required' }
+      }
+    },
+    description:  {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Description required' }
+      }
+    },
+    stock:  {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Stock required' }
+      }
+    },
+    price:  {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Price required' }
+      }
+    },
+    CategoryId:  {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Category id required' }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Product',

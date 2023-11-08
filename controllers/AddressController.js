@@ -1,7 +1,6 @@
 const {Address} = require('../models/address');
 
 const AddressController = {
-    // La direccion creada se asocia automaticamente al usuario autentificado
     async create(req, res) {
         try {
             const address = await Address.create({...req.body, UserId: req.user.id});
@@ -11,6 +10,7 @@ const AddressController = {
             res.status(500).send(error);
         };
     },
+
     async findAll(req, res) {
         try {
             const allAddresses = await Address.findAll();
@@ -20,7 +20,7 @@ const AddressController = {
             res.status(500).send(error);
         };
     },
-    // Solo el usuario autentificado puede sacar todas sus direcciones
+
     async allUserAddresses(req, res) {
         try {
             const userAddresses = await Address.findAll({
@@ -34,6 +34,7 @@ const AddressController = {
             res.status(500).send(error);
         };
     },
+    
     async delete(req, res) {
         try {
             const deleteAddress = await Address.destroy({
