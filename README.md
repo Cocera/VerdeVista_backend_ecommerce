@@ -4,6 +4,9 @@ Welcome to the E-Commerce API project!
 The main objective is to build the backend of an ecommerce dedicated to the sale of plants online.
 This project combines the power of Node.js, Express, MySQL/Sequelize, and various web development technologies to create a robust backend for an online store. As a developer, you will have the opportunity to showcase your skills in building a fully functional RESTful API for an e-commerce platform.
 
+## MySQL Diagram
+![](https://github.com/Cocera/The_Quiz/blob/main/assets/mockupQuiz.gif)
+
 ## Technologies used
 <ul>
 <li><strong>Node.js:</strong> Node.js is the runtime environment that allows JavaScript to run on the server. It's the foundation for building the backend of the application.</li>
