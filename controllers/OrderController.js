@@ -1,12 +1,11 @@
 const { Order, Product, OrderProduct } = require('../models/index.js');
 
 const OrderController = {
-    // PROBLEMAS CON EL DATA TYPE EN TOTAL PRICE
     async create(req, res) {
         try {
             const newOrder = await Order.create({ ...req.body, UserId: req.user.id });
             await order.addProduct(req.body.ProductId);
-            res.status(201).send({ message: 'Order created', newOrder });
+            res.status(201).send({ message: 'Order created'});
         } catch (error) {
             console.error(error);
             res.status(500).send(error);
