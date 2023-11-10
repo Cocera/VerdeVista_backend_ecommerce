@@ -24,7 +24,6 @@ const TokenController = {
     },
 
     async breakPermission(req, res) {
-        // Si el id no coincide con nuestra db de users, devolver error concreto
         try {
             const user = await Token.update(
                 { permission: false },
