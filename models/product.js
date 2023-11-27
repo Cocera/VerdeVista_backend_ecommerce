@@ -50,6 +50,9 @@ module.exports = (sequelize, DataTypes) => {
         notNull: { message: 'Image required' }
       }
     },
+    second_img:  {
+      type: DataTypes.STRING,
+    },
     CategoryId:  {
       type: DataTypes.INTEGER,
       allowNull: false,
