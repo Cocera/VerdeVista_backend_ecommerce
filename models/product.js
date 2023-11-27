@@ -43,6 +43,13 @@ module.exports = (sequelize, DataTypes) => {
         notNull: { message: 'Price required' }
       }
     },
+    img:  {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { 
+        notNull: { message: 'Image required' }
+      }
+    },
     CategoryId:  {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -4,7 +4,7 @@ const { isAdmin, isSuperadmin } = require('../middlewares/isAdmin.js');
 const ProductController = require('../controllers/ProductController.js');
 const router =  express.Router();
 
-router.get('/', authentication, ProductController.findAll);
+router.get('/', ProductController.findAll);
 router.get('/id/:id', authentication, ProductController.findOneById);
 router.get('/name/:name', authentication, ProductController.findOneByName);
 router.get('/price/:price', authentication, ProductController.findOneByPrice);
