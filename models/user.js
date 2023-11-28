@@ -30,9 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: { message: 'Mail required' },
-        isMail: { message: 'Invalid mail format' }
+        isEmail: { message: 'Invalid mail format' }
       }
     },
+    img: DataTypes.TEXT,
     password: {
       type: DataTypes.STRING,
       allowNull: false,

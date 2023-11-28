@@ -119,7 +119,7 @@ const UserController = {
       try {
         const user = await User.findOne({
           where: {
-            mail: req.body.mail,
+            email: req.body.email,
           },
         });
   
