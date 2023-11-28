@@ -4,7 +4,7 @@ const { isAdmin, isSuperadmin } = require('../middlewares/isAdmin.js');
 const TokenController = require('../controllers/TokenController.js');
 const router = express.Router();
 
-router.get('/', authentication, isAdmin, TokenController.findAll);
+router.get('/', TokenController.findAll);
 router.get('/id/:id', authentication, isAdmin, TokenController.findUser);
 router.get('/break/id/:id', authentication, isSuperadmin, TokenController.breakPermission);
 

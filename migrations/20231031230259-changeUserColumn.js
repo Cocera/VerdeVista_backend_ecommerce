@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.changeColumn("Users", "mail", {
+    return queryInterface.changeColumn("Users", "email", {
       type:Sequelize.STRING,
       unique:true
     });

@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: { message: 'Username required' }
       }
     },
-    mail: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
